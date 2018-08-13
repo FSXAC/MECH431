@@ -240,3 +240,12 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+/report/report.toc
+/report/report.synctex.gz
+/report/report.out
+/report/report.lot
+/report/report.log
+/report/report.lof
+/report/report.fls
+/report/report.fdb_latexmk
+/report/report.aux
