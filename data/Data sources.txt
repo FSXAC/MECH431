@@ -1,2 +1,4 @@
 https://www.aeso.ca/market/market-and-system-reporting/data-requests/2016-hourly-load-data/
 http://www.ieso.ca/power-data
+
+https://callmepower.ca/en/ab/electricity/cost/averages-house-apartment-condo
