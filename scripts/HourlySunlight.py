@@ -27,7 +27,7 @@ sumDaylight = 0
 sumSunlight = 0
 
 for month in range(12):
-    k = math.cos(month * math.pi / 6)
+    k = math.cos(month * math.pi / 6 + math.pi)
 
     daylight = (daylightAmp * k + daylightMid) * DAYS_PER_MONTH
     sunlight = SUNNY_PER_DAYLIGHT * daylight
