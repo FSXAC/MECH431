@@ -249,3 +249,5 @@ TSWLatexianTemp*
 /report/report.fls
 /report/report.fdb_latexmk
 /report/report.aux
+
+.DS_Store
