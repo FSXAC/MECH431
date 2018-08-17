@@ -1,0 +1,121 @@
+\documentclass[10pt,letterpaper]{article}
+
+The average power generated must meet the average daytime usage. Data shows that the average Canadian household uses 11,135 kWh of electricity in the year 2014. In Alberta, the electricity usage is 7,200 kWh because there are more natural gas usage that offsets the electricity use. In fact, 77\% of total energy consumption (including electricity generation) is by natural gas. Ontario households uses 9,500 kWh per year.\cite{residential-energy-use}\\
+\\
+It's also worth noting that in a family of four, assuming 118 hours of hot water use, 415 kWh is used for water heaters. There are abundant solar powered water heaters on the market (very popular in developing countries including China). The government of Canada recommends weather-proof year round solar domestic hot water (SDHW) systems. \cite{residential-energy-use, gc-solar-water-heater}.\\
+\\
+
+A completely sustainable system would need to supply an at least 19.7kWh per day, or 821.36 Watts. But that is assuming a constant uniform use of 821.36W for 24 hours. So we can build a model where we assume no electricity is used overnight, or a model that realistically reflects the activity (shown below in figure \ref{fig:power-use-day}). The battery should have an output of at least 1.6kW during high-demand.
+\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/power-use-day}
+	\caption{Average projected power use throughout 24 hours}
+	\label{fig:power-use-day}
+\end{figure}
+
+\textbf{Reliability}\\
+In the best case, the sun rises at 6:00, and sets at 20:00. Which means in the morning we need to have some reserve energy stored in the battery from 20:00 to midnight to next morning 6:00 (based off of figure \ref{fig:power-use-day}).\\
+\\
+
+\subsubsection{Constraints}
+
+The constraints are what the design is limited to, as well as any economic challenges and limits.\\
+\\
+Note that there is no contrainted on the input of the ecnomic model (capital is not fixed) and there is no constraints on the output of the economic model (power generated is not fixed, because extra power could be stored or sold).
+\\
+If the system is not able to achive the power demanded, the extra power will be drawn from power companies. Thus a negative cashflow is incurred from the money saved (if any). The opposite is true that extra power that can't be used or saved locally can be sold to power companies or re-channeled to neighbouring houses where there is more demand.\\
+
+\subsubsection{Goals}
+
+The goals for this project are the additional benefits that are optional to achieve, but the more the better.\\
+\\
+The MARR would be flexible if we're proceeding this project by using my own (or family's) money or savings to pay for the costs.
+
+\subsection{Type}
+
+What type of solar panels do we want to go for? The prominent three options available are:
+
+\textbf{Form-Factor}
+The form factor will determine how they will get installed, and roof area coverage efficiency. They also contribute to mainenance costs.\\
+\begin{itemize}
+	\item Traditional solar panels with reinforced glass and metal frames
+	\item SolarCity solar shingles or equivalent
+\end{itemize}
+
+Once we determined the form factor, there are four types of solar cells, each with different efficiency and cost. For some solar cells, extra equipment and prerequisits are required.\\
+\\
+TODO: fix formatting of this table.\\
+\begin{table}[H]
+	\begin{tabular}{ |c|c|c|c| }
+		\hline                                                                                                                                                                                                                 \\
+		Solar Cell Type                                  & Efficiency-Rate & Advantages                                                               & Disadvantages                                                          \\
+
+		\hline                                                                                                                                                                                                                 \\
+
+		Monocrystalline Solar Panels (Mono-SI)           & ~20\%           & High efficiency rate; optimised for commercial use; high life-time value & Expensive                                                              \\
+
+		\hline                                                                                                                                                                                                                 \\
+
+		Polycrystalline Solar Panels (p-Si)              & ~15\%           & Lower priceSensitive to high temperatures; lower lifespan                & slightly less space efficiency                                         \\
+		\hline                                                                                                                                                                                                                 \\
+
+		Thin-Film: Amorphous Silicon Solar Panels (A-SI) & ~7-10\%         & Relatively low costs; easy to produce \& flexible                        & shorter warranties \& lifespan                                         \\
+
+		\hline                                                                                                                                                                                                                 \\
+
+		Concentrated PV Cell (CVP)                       & ~41\%           & Very high performance \& efficiency rate                                 & Solar tracker \& cooling system needed (to reach high efficiency rate) \\
+
+		\hline
+	\end{tabular}
+	\caption{Different types of solar cells and their advantages and disadvantages\cite{solar-panel-types}}
+\end{table}
+
+\subsection{Cooling}
+
+For certain type of solar panels, overheating causes serious performance issues. Thus, cooling (extra non-recurring cost for installation, and recurring cost of maintainence) is required.\cite{pv-solar-cooling}\\
+
+\subsection{Location}
+Available location is located on the front, left and right slopes of the roof. With the front facing south (most direct sunlight).\\
+\\
+The output power of the solar panel is proportional to the strength of the sunlight received. The strength
+
+\subsection{Battery}
+
+The battery is as critical as the solar panel itself as it's needed for a rainy day (pun intended). During higher peaks or at night, the solar panel will be unable to provide enough electrical power and thus a fall-back such as a battery or generator is required. Since we are only considering renewable energy, generators will be excluded.\\
+\\
+The most popular option is the Tesla Powerwall\cite{tesla-powerwall}. Tesla's website gives the option to select 1-10 power walls. These batteries will cost 8,100 USD per unit with a 960 USD price tag on supporting hardware (regardless of how many units).\\
+\\
+Assuming daily consumption of 20kWh per day, a single Poweerwall unit can deliver for 12 hours.\\
+
+\subsection{Other equipment}
+
+An inverter is required to generate usable sine-wave for AC applications.\\
+\\
+Technlogies may also be applied on the \textit{consuming} end. These include tools or gadgets that incur an initial cost, but have a small impact in reducing electricity use.\\
+\\
+Power factor correction can also reduce electric bills in case that we do need to tap power from utility companies.\\
+
+\section{Paramters for Alternatives}\label{section:parameters}
+
+This section compiles all conditions from previous section into a list of parameters that we wish to choose for our alternatives.\\
+
+\subsection{Solar Panels}
+
+\begin{itemize}
+	\item Grape Solar 300W Monocrystalline Kit [\$2400]: provides approx. 900Wh of energy; it has 3 panels (48"x22") and comes with an inverter\cite{hd-solar1}.
+
+	\item Canadian Solar – 325W polycrystalline module [\$270]\cite{raysolar-solar1}
+
+	\item Heliene 160W Monocrystalline PV module [\$295] \cite{raysolar-solar2}
+\end{itemize}
+
+\subsection{Mounting}
+
+\subsection{Battery}
+
+\subsection{Inverter}
+
+\subsection{Electronics}
+
+\end{document}

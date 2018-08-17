@@ -5,7 +5,7 @@
 \usepackage[english]{babel}
 \usepackage{breakurl}
 \usepackage[superscript]{cite}
-\usepackage{draftwatermark}
+% \usepackage{draftwatermark}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage[margin=1in]{geometry}
@@ -15,7 +15,7 @@
 \usepackage{makeidx}
 \usepackage{multicol}
 \usepackage{nth}
-% \usepackage[default,scale=1.0]{opensans}
+\usepackage[default,scale=1.0]{opensans}
 \usepackage{setspace}
 \usepackage{siunitx}
 \usepackage{svg}
@@ -32,8 +32,8 @@
 \def\UrlBreaks{\do\/\do-}
 
 % Draft watermark
-\SetWatermarkText{\textsc{Draft}}
-\SetWatermarkScale{5}
+% \SetWatermarkText{\textsc{Draft}}
+% \SetWatermarkScale{5}
 
 % PDF and href setup
 % Hyper ref
@@ -63,7 +63,6 @@
 \begin{document}
 \begin{titlepage}
 	\begin{center}
-		Draft build 121\\
 		\vspace*{3in}
 		\line(1, 0){400}\\
 		\Huge{\textbf{Renewable Energy For An Average Household in Edmonton}}\\[0.2cm]
@@ -78,6 +77,10 @@
 		\today\\
 	\end{center}
 \end{titlepage}
+
+% Executive Summary
+\section*{Summary}
+\clearpage
 
 % Table of contents
 \setcounter{secnumdepth}{3}
@@ -100,10 +103,9 @@
 
 Edmonton, being the "Oil city", the captial of the province whose major export is oil, is relying too much on non-renewanle resources like fossil fuel. Thus we need to take steps to move towards greener solutions.\\
 
-% TODO:
-Edmonton average household consumes <INSERT> megawatts per year. It would be world changing if all these electrical energy can be derived from renewable sources.\\
+Edmonton average household consumes an average of between 7500 to 8500 kWh per year. It would be world changing if all these electrical energy can be derived from renewable sources. With the rising prices of means to produce energy, the renewable approach could be economically viable.\\
 \\
-Alberta consumes more than 10,000 GWh of energy a year. This averages to about 2400 kWh per capita\cite{average-albertan-consumption}. The province has an over-reliance on non-renewable resources for its power generation. Furthermore, projects involving building pipelines and method of hydraulic fracturing (fracking) poses serious environmental impact\cite{fracking-kurzgesagt}.
+Alberta consumes more than 10,000 GWh of energy a year. This averages to about 2400 kWh per capita\cite{average-albertan-consumption}. The province has an over-reliance on non-renewable resources for its power generation. Furthermore, projects involving building pipelines and method of hydraulic fracturing (fracking) poses serious environmental impact\cite{fracking-kurzgesagt}.\\
 \\
 This report intends to explore the economic viablility of renewable solutions that an individual or a family can realistically implement.\\
 \\
@@ -112,18 +114,20 @@ This report intends to explore the economic viablility of renewable solutions th
 
 To solve this problem, we will look at the economic analysis of solar solutions. The analysis outlines the economic criteria and economic viability of implementing solar generation for a single average household in the sub-urban neighbourhoods of Edmonton.\\
 \\
-An adequate sustainable solar system should take pressure off of drawing energy from the grid, the electric companies, whose energy is generated from natural gas, coal, and oil. There are three main parts:
+An adequate sustainable solar system should take pressure off of drawing energy from the grid, the electric companies, whose energy is generated from natural gas, coal, and oil. The main parts to a solar system consists of three components\cite{components}:
 
-% TODO: change this to ordered list
-\begin{itemize}
-	\item Generation
-	\item Storage
-	\item Utilization
-\end{itemize}
+\begin{enumerate}
+	\item Generation: this includes the solar (or commonly referred to as PV) cells that converts photon energy from the sun into electrical voltages. In the context of analsis and design, this would also include the infrastructure setup for these cells, such as mechanical mounting racks, and installation efforts.
+	\item Storage: this includes the necessary electrical equipment to ensure extra energy generated from the PV panels could be stored to be used or sold. 
+	\item Utilization: this includes the delivery of energy, which consists of equipment to convert generated direct currents (DC) to household appliance compatible alternating current (AC), like an inverter. This component also considers metering the power output such that excess energy can be sold.
+\end{enumerate}
 
 \section{Design}
 
-The designs will be based on a template, and the template is derived from my house, which is an average Edmontonian house in the sub-urban neighbourhood of Terwillegar. This type of landscape and house is ubiquitous throughout Edmonton and thus would make an adequate model.\\
+A template will be built from an average house loacted in Edmonton suburban area, I will use my house as a referece. The type of landscape and architecture is ubiquitous throughout Edmonton neighbourhood and thus would make the model adequate.\\
+\\
+The power analysis and simulation will be based off of this template.\\
+\\
 
 \begin{figure}[H]
 	\centering
@@ -132,139 +136,225 @@ The designs will be based on a template, and the template is derived from my hou
 	\label{fig:template-house-path}
 \end{figure}
 
-
-\subsection{RCGs}\label{subsection:rcgs}
-We will consider the requirement, constraints, and goals (RCGs) of the the project design which will be factors used to evaluate the successfulness of the project.
-
-\subsubsection{Requirements}
+\subsection{Requirements}\label{requriements}
 
 The requirement is the criteria that determines if the project is a success or fail. The alternatives and layouts we consider should all meet the requirements.\\
-\\
-\textbf{Power Usage}
-The average power generated must meet the average daytime usage. Data shows that the average Canadian household uses 11,135 kWh of electricity in the year 2014. In Alberta, the electricity usage is 7,200 kWh because there are more natural gas usage that offsets the electricity use. In fact, 77\% of total energy consumption (including electricity generation) is by natural gas. Ontario households uses 9,500 kWh per year.\cite{residential-energy-use}\\
-\\
-It's also worth noting that in a family of four, assuming 118 hours of hot water use, 415 kWh is used for water heaters. There are abundant solar powered water heaters on the market (very popular in developing countries including China). The government of Canada recommends weather-proof year round solar domestic hot water (SDHW) systems. \cite{residential-energy-use, gc-solar-water-heater}.\\
-\\
+
+\subsubsection{Power Demand}
+
+The average Canadian household consumes 11,135 kWh of electricity in 2014\cite{residential-energy-use}. While Alberta household average is actually lower than the national average: at 7200 kWh. For the sake of analysis and providing a conservative estimate, we will use 8300 kWh per household.\cite{aeso-load-data, ieso-power-data, callmepower}\\
+
 Finding the daily average, the daily energy use is given by
+
 $$
-E_\text{daily}=7200\times10^3\div 365.25 = 19.7\text{kWh per day}
+E_\text{daily}=8300\div 365.25 = 22.7\text{kWh per day}
 $$
-A completely sustainable system would need to supply an at least 19.7kWh per day, or 821.36 Watts. But that is assuming a constant uniform use of 821.36W for 24 hours. So we can build a model where we assume no electricity is used overnight, or a model that realistically reflects the activity (shown below in figure \ref{fig:power-use-day}). The battery should have an output of at least 1.6kW during high-demand.
+
+An ideal sustainable system would need to supply at least 22.7 kWh a day on average for everyday of the year. However, we will see later in section <INSERT> that the power demand is non-uniform. On top of that, during winter times, the solar performance is hindered by the reduced hours of sunlight and snow coverage. Having big enough batteries to compensate the reduced generation for an entire season is inconceivable. This issue will be explored in more detail in the weather and geneartion section <INSERT>\\
+
+\subsubsection{Rate of Return}
+
+Because this is an economic analyis of a project meant to save costs in the long-run, we will assume an after-tax MARR of 3\%. This aligns with historical data from the industry.\\
+
+\section{Scenario}
+
+For this economic analyis, the following assumptions will be asserted. These assumptions are based off of real data.\\
+\\
+We will assume the solar system is installed for a residential household. Despite that, to incorporate the tax and asset analysis element in this exploration, we will treat the saved costs as operational income. The equipment will be treated as assets with the correspondant CCA class defined by the Canadian Revenue Agency\cite{cca}. As such, the assets will be depreciated by using the method outlined in the course.\\
+
+\subsection{Energy Consumption}
+
+As calculated earlier is the requirements subsection (section \ref{requriements}), the yearly average is 8300 kWh. The monthly average is then 692 kWh and  the daily average is 22.7 kWh. All uniformly spreadout throughout the year. To ensure the analyis is more realistic and accurate, we will tweak the usage such that it follows a cosine curve. The characterisitcs of the this consumption curve is derived from real hourly usage data collected by AESO and IESO.\cite{aeso-load-data, ieso-power-data}\\
+\\
+I derived a formula for monthly consumption such that the yearly average is still 8300 kWh, but the monthly usage varies due to seasonal applicance usage:
+
+\begin{equation}
+	\text{Monthly Consumption}=X\cos\left(\frac{m\pi}{6}\right)+M
+	\label{eqn:monthly-consumption}
+\end{equation}
+
+Where $X$ is the expected fluctuation in consumption between the seasons. Suppose this is 10\% of monthly 692 kWh usage.\\
+\\
+Where $m$ is the month in numerical form (1 for January, 5 for May, etc.) and $M$ is the monthly average (692 kWh).\\
+\\
+The projected consumption by our model for each month is computed using equation \ref{eqn:monthly-consumption} in the table as follows (table \ref{table:consumption-table}, figure \ref{fig:consumption-graph}):
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ |c|c| }
+		\hline
+		Month & Consumption\\
+		\hline
+		1 & 751.57 kWh\\
+		2 & 726.25 kWh\\
+		3 & 691.67 kWh\\
+		4 & 657.09 kWh\\
+		5 & 631.77 kWh\\
+		6 & 622.50 kWh\\
+		7 & 631.77 kWh\\
+		8 & 657.09 kWh\\
+		9 & 691.67 kWh\\
+		10 & 726.25 kWh\\
+		11 & 751.57 kWh\\
+		12 & 760.84 kWh\\
+		\hline
+		Total & 8300 kWh\\
+		\hline
+	\end{tabular}
+	\caption{Modelled monthly electricity consumption}
+	\label{table:consumption-table}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{Modelled monthly electricity consumption (graph)}
+	\label{fig:consumption-graph}
+\end{figure}
+
+The full detailed calculations can be found in appendix \ref{appendix:consumption}.\\
+\\
+\subsection{Weather}
+
+The biggest uncertainty lies in weather. Fortunately, Edmonton is statistically one of the sunniest places in Canada, with 4383 hours of daylight and 2205 of sunlight annually on average\cite{sunshine-canadian,climatemps}.\\
+\\
+Using this information, we can build a model, similar to that of the monthly consumption to determine the amount of sunlight the PV cells have exposure to.\\
+\\
+The output is a sinusoid with the peaks at mid-year during summer seasons: (figure \ref{fig:weather-daylight}).\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{Model projection of hours of daylight monthly}
+	\label{fig:weather-daylight}
+\end{figure}
+
+Daylight does not imply direct sunlight. Climatemps concludes that 50.3\% of the daylight time is sunny, 25\% is cloudy or shade, and the rest 24.7\% is other times where sun has low intensity, possibly due to rain, snow, etc\cite{climatemps}. Thus, the number of sunny hours is 50.3\% times the total monthly daylight hours. Likewise for the other two.\\
+\\
+Now that we classified possible weather to three general states, we can assign a relative solar performance score to each. For sunny weathers, the overall effect on the solar panel performance is minimal, the performance is expected to be at 90\%. This is not 100\% because we need to account for shallow angles of the sun during mornings and evenings. For cloudy, the performance can drop to 50\%, and lastly 25\% performance for overcasts.\\
+\\
+Using these statistics, we can compute the expected value of the \textit{equivalent hours of direct sunlight} received by the PV cells.
+
+\begin{equation}
+	\text{Equivalent hours}=\text{Sunny hours}\times50.3\%+\text{Cloudy hours}\times 25\% + \text{Overcast hours}\times 24.7\%
+\end{equation}
+
+We then multiply these equivalent hours by a correction factor such that the projected data will fit better than real collected data from home-owners with solar panels. These data are available from Kuby, a solar systems installation and consulting firm in Alberta\cite{kuby-complete-guide}. The correction factor corrects the loss in efficiency due to more extreme weather conditions in the winter and snow obstructions.\\
+\\
+The final monthly equivalent sunlight hours is shown in figure \ref{fig:weather-corrected}. This will be directly incorporated into our economic analyis to determine how much grid power we need.\\
 \\
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{assets/power-use-day}
-	\caption{Average projected power use throughout 24 hours}
-	\label{fig:power-use-day}
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{Corrected equivalent sunlight hours}
+	\label{fig:weather-corrected}
 \end{figure}
 
-\textbf{Reliability}\\
-In the best case, the sun rises at 6:00, and sets at 20:00. Which means in the morning we need to have some reserve energy stored in the battery from 20:00 to midnight to next morning 6:00 (based off of figure \ref{fig:power-use-day}).\\
+The full detailed calculations can be found in appendix \ref{appendix:weather}.\\
 \\
-\textbf{Rate of Return}\\
-The rate of return should be greater than 2\%. Because 2\% is at least the inflation rate if the money is not put to use. (Additional MARR may apply if we take out loans to cover the cost of the project).
 
-\subsubsection{Constraints}
+\subsection{Grid Power}
 
-The constraints are what the design is limited to, as well as any economic challenges and limits.\\
-\\
-Note that there is no contrainted on the input of the ecnomic model (capital is not fixed) and there is no constraints on the output of the economic model (power generated is not fixed, because extra power could be stored or sold).
-\\
-If the system is not able to achive the power demanded, the extra power will be drawn from power companies. Thus a negative cashflow is incurred from the money saved (if any). The opposite is true that extra power that can't be used or saved locally can be sold to power companies or re-channeled to neighbouring houses where there is more demand.\\
+Using Ontario Energy Board (OEB) collected historical data for time-of-use (TOU) electricity rates as referece, we build a model for the grid power for the next 40 years\cite{oeb}. The collected data goes back to 2006 which should be enough to project a trend. Table \ref{table:grid-history} shows the electricity rates depending on TOU.\\
 
-\subsubsection{Goals}
-
-The goals for this project are the additional benefits that are optional to achieve, but the more the better.\\
-\\
-The MARR would be flexible if we're proceeding this project by using my own (or family's) money or savings to pay for the costs.
-
-\subsection{Type}
-
-What type of solar panels do we want to go for? The prominent three options available are:
-
-\textbf{Form-Factor}
-The form factor will determine how they will get installed, and roof area coverage efficiency. They also contribute to mainenance costs.\\
-\begin{itemize}
-	\item Traditional solar panels with reinforced glass and metal frames
-	\item SolarCity solar shingles or equivalent
-\end{itemize}
-
-Once we determined the form factor, there are four types of solar cells, each with different efficiency and cost. For some solar cells, extra equipment and prerequisits are required.\\
-\\
-TODO: fix formatting of this table.\\
 \begin{table}[H]
-	\begin{tabular}{ |c|c|c|c| }
-		\hline\\
-		Solar Cell Type & Efficiency-Rate &Advantages &Disadvantages\\
-
-		\hline\\
-		
-		Monocrystalline Solar Panels (Mono-SI)&~20\%&High efficiency rate; optimised for commercial use; high life-time value &Expensive\\
-
-		\hline\\
-		
-		Polycrystalline Solar Panels (p-Si)&~15\%&Lower priceSensitive to high temperatures; lower lifespan & slightly less space efficiency\\
-		\hline\\
-		
-		Thin-Film: Amorphous Silicon Solar Panels (A-SI)&~7-10\%&Relatively low costs; easy to produce \& flexible&shorter warranties \& lifespan\\
-
-		\hline\\
-
-		Concentrated PV Cell (CVP)&~41\%&Very high performance \& efficiency rate&Solar tracker \& cooling system needed (to reach high efficiency rate)\\
-
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Year & Off-peak (\$/kWh) & Mid-peak (\$/kWh) &  On-peak (\$/kWh)\\
+		\hline
+		2006 & \$0.04 & \$0.08 & \$0.11\\
+		2007 & \$0.03 & \$0.07 & \$0.09\\
+		2008 & \$0.03 & \$0.07 & \$0.09\\
+		2009 & \$0.04 & \$0.08 & \$0.09\\
+		2010 & \$0.05 & \$0.08 & \$0.10\\
+		2011 & \$0.06 & \$0.09 & \$0.11\\
+		2012 & \$0.07 & \$0.10 & \$0.12\\
+		2013 & \$0.07 & \$0.10 & \$0.12\\
+		2014 & \$0.08 & \$0.11 & \$0.14\\
+		2015 & \$0.08 & \$0.12 & \$0.16\\
+		2016 & \$0.09 & \$0.13 & \$0.18\\
+		2017 & \$0.08 & \$0.11 & \$0.16\\
+		2018 & \$0.07 & \$0.09 & \$0.13\\
 		\hline
 	\end{tabular}
-	\caption{Different types of solar cells and their advantages and disadvantages\cite{solar-panel-types}}
+	\caption{Historical electricity rates}
+	\label{table:grid-history}
 \end{table}
 
-\subsection{Cooling}
+Power Stream's data gives into insight into the duration of the peak times. Using that determine for each day, 50\% of the time is off-peak, 25\% of the time is mid-peak and on-peak\cite{powerstreamTOU}. Using this statistics, we find the expected value for electricity each year (equation \ref{eqn:historical-electricity}):\\
 
-For certain type of solar panels, overheating causes serious performance issues. Thus, cooling (extra non-recurring cost for installation, and recurring cost of maintainence) is required.\cite{pv-solar-cooling}\\
+\begin{equation}
+	\text{EV electricity rates}=50\%\times\text{off-peak rate}+25\%\times \text{mid-peak rate}+25\%\times\text{on-peak rate}
+	\label{eqn:historical-electricity}
+\end{equation}
 
-\subsection{Location}
-Available location is located on the front, left and right slopes of the roof. With the front facing south (most direct sunlight).\\
+Using past electric bills and online sources as references, there are also associated \textit{transmission, distribution}, and \textit{administration} fees associated with each kWh of consumption. Looking at a sample electric bill, the ratio of these fees, relatives to the electricity rates is as follows (table \ref{table:grid-fees}). Note that this only applies to year 2018, as projected rate of increase for electricity is different from rate of increase for distribution and transmission.\\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c c|}
+		\hline
+		Transmission&16.80\%\\
+		Distribution&13.00\%\\
+		Admin&5.00\%\\
+		\hline
+	\end{tabular}
+	\caption{Rates of other electricity fees as a ratio to main electricity rates}
+	\label{table:grid-fees}
+\end{table}
+
+The total cost per kWh for 2018 is \$0.1165 per kWh.\\
 \\
-The output power of the solar panel is proportional to the strength of the sunlight received. The strength 
+We assume the projected increase in electricity rates is 5.10\% annually, and the projected rate of increase for transmission and distribution is 2.20\% annualy.\cite{transmission-projection} Using the 2018 rates as base rate, we can compute the cost at some future time. Figure \ref{fig:grid-projection} shows tThe estimated trajectory of grid electricity costs. Full calculations and tables can be found in appendix \ref{appendix:grid}.
 
-\subsection{Battery}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{Projected total cost to electricity per kWh}
+	\label{fig:grid-projection}
+\end{figure}
 
-The battery is as critical as the solar panel itself as it's needed for a rainy day (pun intended). During higher peaks or at night, the solar panel will be unable to provide enough electrical power and thus a fall-back such as a battery or generator is required. Since we are only considering renewable energy, generators will be excluded.\\
+According to BCHydro, the current buyback rate for excess generated electricity is 9.99 cents per kWh\cite{bchydro-buyback}, assume a slow but steady growth of 1.0\% a year. The buyback rate could be directly incorporated into our analysis (figure \ref{fig:grid-buyback}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{Projected buyback rate for electricty per kWh}
+	\label{fig:grid-buyback}
+\end{figure}
+
+\subsection{Government Incentives}
+
+Asides from saving money in the long-run and potentiall selling excess energy (see previous section for buyback), the Alberta government and the City of Edmonton offers generous incentives that takes form of a one-time rebate.\cite{kuby-costs,kuby-edmonton,kuby-alberta}\\
 \\
-The most popular option is the Tesla Powerwall\cite{tesla-powerwall}. Tesla's website gives the option to select 1-10 power walls. These batteries will cost 8,100 USD per unit with a 960 USD price tag on supporting hardware (regardless of how many units).\\
+The rebate is applied immediately when the project is purchased with cash, or applied immediately and reduces the debt if a loan is taken.\\
 \\
-Assuming daily consumption of 20kWh per day, a single Poweerwall unit can deliver for 12 hours.\\
+Alberta offers a rebate of \$0.75 per W, up to the lesser of \$10,000 or 30\% of the initial cost\cite{kuby-alberta}. The city of Edmonton offers an additional \$0.15 per W, no upper limits.\\
 
-\subsection{Other equipment}
+\subsection{Capital}
 
-An inverter is required to generate usable sine-wave for AC applications.\\
+There are two main methods of purchasing, cash or loan. For the sake of simplicity, we will assume it is one or the other. We will also assume we have less than \$10,000 of savings immediately in savings. This implies that any setup under the cost of \$10,000 can be paid in cash.\\
 \\
-Technlogies may also be applied on the \textit{consuming} end. These include tools or gadgets that incur an initial cost, but have a small impact in reducing electricity use.\\
+Otherwise, we can choose to take a loan. The details for the loan is up to the contractor. This will be specified in the differente alternatives in the alternatives section (section \ref{section:alternatives}).\\
 \\
-Power factor correction can also reduce electric bills in case that we do need to tap power from utility companies.\\
+For loans, it is commonly to be relative to a \textit{prime rate}. In this case, we use the recent data from yCharts which shows 3.0\%.\cite{prime-rate} We assume that this rate won't change.\\
+\\
+Finally, we will use a conservative constant 2\% annual inflation rate based on historical data.\cite{inflation} We assume this rate do not change for the duration of the analysis.\\
 
-\section{Paramters for Alternatives}\label{section:parameters}
+\subsection{Depreciation and Taxes}
 
-This section compiles all conditions from previous section into a list of parameters that we wish to choose for our alternatives.\\
+Since we treat the cost savings as a business income, they will be taxed like a business. The corporation tax for new, small businesses is 10\% according to the Revenue Agency\cite{business-tax}.\\
+\\
+Any non-contracted purchases will be subject to a local sales tax GST of 5.0\%.\\
+\\
+Purchases that has a defined CCA class will be added to a UCC account. The book value for that account will be depreciated by the corresponding CCA class rate. In this analysis, we conservatively assume that excess tax credit are not carried on to the next year, and that the government will not provide negative tax (positive cashflow).\\
 
-\subsection{Solar Panels}
+\subsection{Maintainance}
 
-\begin{itemize}
-	\item Grape Solar 300W Monocrystalline Kit [\$2400]: provides approx. 900Wh of energy; it has 3 panels (48"x22") and comes with an inverter\cite{hd-solar1}.
+\subsection{Salvage}
 
-	\item Canadian Solar – 325W polycrystalline module [\$270]\cite{raysolar-solar1}
-
-	\item Heliene 160W Monocrystalline PV module [\$295] \cite{raysolar-solar2}
-\end{itemize}
-
-\subsection{Mounting}
-
-\subsection{Battery}
-
-\subsection{Inverter}
-
-\subsection{Electronics}
-
-\section{Alternatives}
+\section{Alternatives}\label{section:alternatives}
 
 TODO:\\
 \\
@@ -355,5 +445,31 @@ After initial simulation, individual parameters such as compass-heading of the h
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{ieeetr}
 \bibliography{references}
+
+% Appendix
+\clearpage
+\appendix
+\section{Consumption Calculations}\label{appendix:consumption}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{assets/placeholder}
+	\caption{Spreadsheet calculations on power consumption}
+\end{figure}
+
+\clearpage
+\section{Weather Calculations}\label{appendix:weather}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{TODO}
+\end{figure}
+
+\clearpage
+\section{Grid Calculations}\label{appendix:grid}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{assets/placeholder}
+	\caption{TODO}
+\end{figure}
 
 \end{document}
