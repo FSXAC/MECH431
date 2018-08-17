@@ -32,7 +32,8 @@ for month in range(12):
     daylight = (daylightAmp * k + daylightMid) * DAYS_PER_MONTH
     sunlight = SUNNY_PER_DAYLIGHT * daylight
 
-    print('%.2f' % daylight + '\t%.2f' % sunlight)
+    print('%.2f' % daylight)
+    # print('%.2f' % daylight + '\t%.2f' % sunlight)
     sumDaylight += daylight
     sumSunlight += sunlight
 
