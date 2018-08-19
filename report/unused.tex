@@ -118,4 +118,61 @@ This section compiles all conditions from previous section into a list of parame
 
 \subsection{Electronics}
 
+\section{Economic Model}
+As briefed explained in section \ref{subsection:rcgs}, the economic model will be a combination of segmenting model, where the cashflows are broken into differet core components, learning curve model (for modelling the effective of technlogy and repetitive installation). Finally, the cost index model for market prices of products.\\
+
+\subsection{Expected Cashflow-In}
+The main benefit or positive cashflow is from the savings in electrical bills. We would also need to analyze the current and projected future cost to electricty from utility companies. Note that electricity costs may even change throughout the year as demand changes.\\
+\\
+There are various other ways that would invoke a positive cash flow:\\
+
+\begin{itemize}
+	\item Alberta government incentives that promotes green energy; they provide a fixed cash-back from receipts of purchases of renewable technologies. This will be a one-time / non-recurring benefit.
+
+	\item Extra, unused power may be sold back to utility companies; they could also be redirected to other households whose demands are higher.
+
+	\item Salvage value for the technologies and equipment at the end of analysis period. If well-maintained, there should be a high resale value as demand for renewable equiment increases in time.
+\end{itemize}
+
+\subsection{Expected Cashflow-Out}\label{subsection:cashflow-out}
+
+We should expect majority of the cost will be the initial cost of equipment and installation.\\
+\\
+If the solar panels or installation is financed, then the initial cost would be the down-payment. However, we would also expect a debt with interest $i$. This will ultimately affect our MARR in our rate of return analysis (section \ref{subsection:rate-of-return}).\\
+\\
+Post-installation, there will be periodic cost to maintain the equipment. The solar panels would only need to be cleaned, and replacement is only necessary when the cells fail, which has low probability. Another periodic cost would be replacement of the batteries. Eventhough the batteries are rechargeable, they have about 5,000 full charge cycles while their effective performance and capacity decrease over time\cite{tesla-powerwall-wiki}.\\
+
+\subsection{Sources of Capital}
+
+For minimum risk in rate or return, all funding will come from other family members taking dividends in the project. The source of capital will be our savings and income.\\
+\\
+Alternatively, to put on less pressure financially in present time, we could choose to take out a one-time loan to pay all project costs up-front. The interest rate $i$ of the loan will mostly drive the MARR in the rate of return analysis (section \ref{subsection:rate-of-return}).\\
+\\
+Lastly, we could choose not to take loan, but finance the cost to install assuming that such option is available. Again, as mentioned in section \ref{subsection:cashflow-out}, the interest rate of the financing plan will affect the MARR.\\
+
+\subsection{Taxes}
+\begin{center}
+	This section is intentionally left blank (haven't covered there in the course yet).\\
+\end{center}
+
+
+\subsection{Net Present Value Analysis}
+
+For each of the three analysis periods, a net present value analysis will be performed. The assumption is that everything is re-purchaseable. The cost of replacement will follow a model based on the cost index trends.\\
+\\
+The NPV should infer roughly a good solution.\\
+\\
+
+\subsection{Equivalent Annual Cashflow Analysis}
+The different alternatives would have different lifetimes and replacement would be required. We will consider \textbf{Replacement analysis}. When the old panel become so inefficient that the equivalent annual cost to operate the old panel (including the extra cost paid to the power companies) is greater than the equivalent annual cost of buying and operating new panels.\\
+
+\subsection{Rate of Return Analysis}\label{subsection:rate-of-return}
+Here we will compute the IRR of the given alternatives for all three analysis periods.\\
+
+\section{Simulation}
+
+The simulation will run for all three proposed analysis periods. For the 5 year perio, historical weather data will be collected and ran through the simulation. For 20 and 40 years, based on historical data, random weather conditions will be generated.\\
+\\
+These simulations will serve as a resiliency test, and the final cost at the end of the simulation period will be compared amongst the alternatives.\\
+
 \end{document}
